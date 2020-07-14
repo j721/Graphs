@@ -103,8 +103,6 @@ class Graph:
 
         This should be done using recursion.
         """
-        #create a set to keep track of visited nodes
-        # visited = set()
 
         #if not in visited    
         if starting_vertex not in visited:
@@ -127,24 +125,38 @@ class Graph:
         breath-first order.
         """
         #implement using a stack
-
-        # Create an empty stack
-        s = Stack()
-
-         # and enqueue A PATH TO the starting vertex ID
-        # Create a Set to store visited vertices
-        visited = set()
+       
+        visited = set()  # create a Set to store visited vertices
+        # Create an empty queue
+        q = Queue()
+        
+        # enqueue A PATH TO the starting vertex 
+        q.enqueue([starting_vertex])
+        
         # While the queue is not empty...
-        q.enqueue(starting_vertex)
+        while q > 0:
             # Dequeue the first PATH
+            path = q.dequeue()
             # Grab the last vertex from the PATH
+            last_vertex = path[-1]
             # If that vertex has not been visited...
-                # CHECK IF IT'S THE TARGET
+            if last_vertex not in visited:
+                # CHECK IF IT'S THE TARGET 
+                if last_vertex == destination_vertex:
                   # IF SO, RETURN PATH
-                # Mark it as visited...
+                    return path
+                #mark as visited and add to visited set
+                visited.add(last_vertex)
+
+
                 # Then add A PATH TO its neighbors to the back of the queue
+                for neighbor in self.vertices[last_vertex]:
                   # COPY THE PATH
+                  copied_path = path.copy()
                   # APPEND THE NEIGHBOR TO THE BACK
+                  copied_path.append(neighbor)
+                  #enqueue to the new path
+                  q.enqueue(copied_path)
 
 
     def dfs(self, starting_vertex, destination_vertex):
