@@ -56,9 +56,14 @@ class Graph:
                 #mark as visitied(i.e. add to the visited set)
                 visited.add(v)
                 print(f"Visited {v}")
-                #add all neighbors to the queue
-                for next_vert in self.get_neighbors(v):
-                    q.enqueue(next_vert)
+
+            neighbors = self.get_neighbors(v)
+
+            for neighbor in neighbors:
+                q.enqueue(neighbor) 
+                # #add all neighbors to the queue
+                # for next_vert in self.get_neighbors(v):
+                #     q.enqueue(next_vert)
 
     def dft(self, starting_vertex):
         """
@@ -113,10 +118,10 @@ class Graph:
 
             #for each neighbor in vertices 
             for neighbor in self.vertices[starting_vertex]:
-                #call function recursively
+                #call function recursively.
                 self.dft_recursive(neighbor, visited)    
 
-
+    
 
     def bfs(self, starting_vertex, destination_vertex):
         """
@@ -200,7 +205,7 @@ class Graph:
                 s.push(new_path)
 
 
-    def dfs_recursive(self, starting_vertex, destination_vertex, visited = set(), path =[]):
+    def dfs_recursive(self, starting_vertex, destination_vertex, visited = set(), new_path =[]):
         """
         Return a list containing a path from
         starting_vertex to destination_vertex in
@@ -215,7 +220,21 @@ class Graph:
         visited.add(starting_vertex)
         #add path for starting vertex
         new_path = new_path + [starting_vertex]
+
+        #if vertex is our target?
+        if starting_vertex == destination_vertex:
+            #return the path
+            return new_path
         
+        #for each of the vertex's neighbor
+        for neighbor in self.get_neighbors(starting_vertex):
+            #if node has not been visited:
+            #recursion and look for a new path to search
+            new_path = self.dfs_recursive(neighbor, destination_vertex, visited, path)
+            # if new_path is not None return it
+            if new_path is not None:
+                return new_path
+
 
 
 if __name__ == '__main__':
