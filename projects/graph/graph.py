@@ -178,15 +178,27 @@ class Graph:
             #pop off the first path
             path = s.pop()
             #get last vertex from the path
-            last_vertex = path[-1]
+            current_vertex = path[-1]
 
             #if vertex hasn't been visited
-            if last_vertex not in visited:
+            if current_vertex not in visited:
                 #check if vertex ==target
-                if last_vertex == destination_vertex:
+                if current_vertex == destination_vertex:
                     #return path
                     return path
-                    
+                
+                #mark vertex as visited
+                visited.add(current_vertex)
+            
+            #add a path to vertex's neighbors
+            for neighbor in self.vertices[current_vertex]:
+                #copy the path
+                new_path = path.copy()
+                #append the neighbor to the back
+                new_path.append(neighbor)
+                #add new path to the stack
+                s.push(new_path)
+
 
     def dfs_recursive(self, starting_vertex, destination_vertex):
         """
