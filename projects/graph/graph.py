@@ -211,6 +211,12 @@ class Graph:
         # #create an empty set to keep track of visited
         # visited = set()
 
+        #add starting vertex into visited set
+        visited.add(starting_vertex)
+        #add path for starting vertex
+        new_path = new_path + [starting_vertex]
+        
+
 
 if __name__ == '__main__':
     graph = Graph()  # Instantiate your graph
