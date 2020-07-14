@@ -200,7 +200,7 @@ class Graph:
                 s.push(new_path)
 
 
-    def dfs_recursive(self, starting_vertex, destination_vertex):
+    def dfs_recursive(self, starting_vertex, destination_vertex, visited = set(), path =[]):
         """
         Return a list containing a path from
         starting_vertex to destination_vertex in
@@ -208,7 +208,9 @@ class Graph:
 
         This should be done using recursion.
         """
-        pass  # TODO
+        # #create an empty set to keep track of visited
+        # visited = set()
+
 
 if __name__ == '__main__':
     graph = Graph()  # Instantiate your graph
