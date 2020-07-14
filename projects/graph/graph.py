@@ -106,7 +106,17 @@ class Graph:
         #create a set to keep track of visited nodes
         # visited = set()
 
+        #if not in visited    
         if starting_vertex not in visited:
+            #mark as visited and into the visited set
+            visited.add(starting_vertex)
+            #print out visited vertices
+            print(f"dft_recursive visited {starting_vertex}")
+
+            #for each neighbor in vertices 
+            for neighbor in self.vertices[starting_vertex]:
+                #call function recursively
+                self.dft_recursive(neighbor, visited)    
 
 
 
