@@ -79,17 +79,19 @@ class Graph:
         #while stack is not empty
 
         while s.size() > 0:
-            #pop off the first item/item that's at the very top. the current_node that's visited
-            current_node = s.pop()
+            #pop off the first item/item that's at the very top. the current_vertex that's visited
+            current_vertex = s.pop()
 
             #if not been visited
-            if current_node not in visited:
+            if current_vertex not in visited:
                 #mark as visited (add to the visited set)
-                visited.add(current_node)
-                print(f"dft visited {current_node}")
+                visited.add(current_vertex)
+                print(f"dft visited {current_vertex}")
 
                 # for each neighboring vertex, add all neighbors into the stack
-                for neighbor in neighbors:
+                for neighbor in self.get_neighbors(current_vertex):
+                    #push method created from Stack in util.py file
+                        #append method actually used
                     s.push(neighbor)
         
 
