@@ -106,7 +106,7 @@ class SocialGraph:
             #if user in friends list
             for user in friends:
                 if  user not in visited:
-                    #mark as visited and add other user(friend)
+                    #mark as visited and add other visited node(friend)
                     visited[user] = visited[node] + [user]
                     #update queue with the user
                     queue.append(user)
