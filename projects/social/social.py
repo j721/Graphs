@@ -1,5 +1,18 @@
 import random #import random module
 
+class Queue():
+    def __init__(self):
+        self.queue = []
+    def enqueue(self, value):
+        self.queue.append(value)
+    def dequeue(self):
+        if self.size() > 0:
+            return self.queue.pop(0)
+        else:
+            return None
+    def size(self):
+        return len(self.queue)
+
 class User:
     def __init__(self, name):
         self.name = name
@@ -52,7 +65,7 @@ class SocialGraph:
 
         # Create friendships
         possible_friendships = [] #create list of possible friends (edges)
-        
+
         for user_id in self.users:
             for friend_id in range(user_id + 1, self.last_id +1):
                 possible_friendships.append((user_id, friend_id))
@@ -78,6 +91,10 @@ class SocialGraph:
         """
         visited = {}  # Note that this is a dictionary, not a set
         # !!!! IMPLEMENT ME
+
+        q = Queue()
+        q.enqueue()
+
         return visited
 
 
