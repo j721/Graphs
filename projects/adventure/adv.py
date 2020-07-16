@@ -73,15 +73,26 @@ player = Player(world.starting_room)
 #and no '?' in the adjacency dictionaries. To do this, 
 # you will need to write a traversal algorithm that logs the path into traversal_path as it walks.
 # 
-# think of using either bft (queue) or dft(stack)
-# 
+# think of using either bft (queue)
+
+#  or dft(stack)
+# Start by writing an algorithm that picks a random unexplored direction 
+# from the player's current room, travels and logs that direction, then loops. 
+# This should cause your player to walk a depth-first traversal. 
+# When you reach a dead-end (i.e. a room with no unexplored paths),
+#  walk back to the nearest room that does contain an unexplored path.
 # 
 
 
-#initialize with empty path.
+#initialize traversal path
 traversal_path =[]
 #create empty visited set 
 visited =set()
+#have path be set to empty stack
+path = Stack()
+
+#visited rooms less than total number of rooms in the graph (from world.py file)
+while len(visited) < len(room_graph):
 
 
 # TRAVERSAL TEST
