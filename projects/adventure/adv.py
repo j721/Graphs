@@ -28,9 +28,31 @@ player = Player(world.starting_room)
 # Fill this out with directions to walk
 # traversal_path = ['n', 'n']
 
+#UPER
+
+#To solve this path, you'll want to construct your own traversal graph. 
+# You start in room 0, which contains exits ['n', 's', 'w', 'e']. 
+#  
+# need to create own traversal path- set of directions for player to raver
+            # start by initializing empty traversal path
+# create a visited set/dictionary to keep track of the visited rooms
+            #initialize empty visited set() or {}   
+# 
+# 
+# 
+# You know you are done when you have exactly 500 entries (0-499) in your graph  
+#and no '?' in the adjacency dictionaries. To do this, 
+# you will need to write a traversal algorithm that logs the path into traversal_path as it walks.
+# 
+# think of using either bft (queue) or dft(stack)
+# 
+# 
+
+
 #initialize with empty path.
 traversal_path =[]
-
+#create empty visited set 
+visited =set()
 
 
 # TRAVERSAL TEST
